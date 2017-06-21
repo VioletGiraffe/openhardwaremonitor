@@ -8,6 +8,9 @@
 	
 */
 
+using System.Collections.Generic;
+using static OpenHardwareMonitor.Hardware.Control;
+
 namespace OpenHardwareMonitor.Hardware {
 
   public enum ControlMode {
@@ -15,6 +18,7 @@ namespace OpenHardwareMonitor.Hardware {
     Software,
     Default,
     Auto
+    SoftwareCurve
   }
 
   public interface IControl {
@@ -22,6 +26,8 @@ namespace OpenHardwareMonitor.Hardware {
     Identifier Identifier { get; }
 
     ControlMode ControlMode { get; }
+
+    ControlMode ActualControlMode { get; }
 
     float SoftwareValue { get; }
 
@@ -36,5 +42,17 @@ namespace OpenHardwareMonitor.Hardware {
 
     void SetAuto(float value);
 
+    void SetSoftwareCurve(List<ISoftwareCurvePoint> points, ISensor sensor);
+    SoftwareCurve GetSoftwareCurve();
+    void NotifyHardwareAdded(List<IGroup> allhardware);
+    void NotifyHardwareRemoved(IHardware hardware);
+    void NotifyClosing();
+
   }
+
+    public interface ISoftwareCurvePoint
+    {
+        float SensorValue { get; set; }
+        float ControlValue { get; set; }
+}
 }
