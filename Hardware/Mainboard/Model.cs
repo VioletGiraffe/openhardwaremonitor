@@ -11,6 +11,8 @@
 namespace OpenHardwareMonitor.Hardware.Mainboard {
 
   internal enum Model {
+    // Alienware
+    Alien_R10,
     // ASRock
     _880GMH_USB3,
     AOD790GX_128M,

@@ -166,6 +166,8 @@ namespace OpenHardwareMonitor.Hardware.Mainboard {
 
     public static Model GetModel(string name) {
       switch (name) {
+        case "0NWN7M":
+          return Model.Alien_R10;
         case "880GMH/USB3":
           return Model._880GMH_USB3;
         case "ASRock AOD790GX/128M":

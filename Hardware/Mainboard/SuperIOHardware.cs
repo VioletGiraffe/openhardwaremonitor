@@ -182,6 +182,7 @@ namespace OpenHardwareMonitor.Hardware.Mainboard {
         case Chip.IT8718F:
         case Chip.IT8720F:
         case Chip.IT8726F:
+        case Chip.IT8669E:
           GetITEConfigurationsA(superIO, manufacturer, model, v, t, f, c,
             ref readFan, ref postUpdate, ref mutex);
           break;
@@ -628,6 +629,48 @@ namespace OpenHardwareMonitor.Hardware.Mainboard {
               v.Add(new Voltage("Voltage #7", 6, true));
               v.Add(new Voltage("Voltage #8", 7, true));
               v.Add(new Voltage("VBat", 8));
+              for (int i = 0; i < superIO.Temperatures.Length; i++)
+                t.Add(new Temperature("Temperature #" + (i + 1), i));
+              for (int i = 0; i < superIO.Fans.Length; i++)
+                f.Add(new Fan("Fan #" + (i + 1), i));
+              for (int i = 0; i < superIO.Controls.Length; i++)
+                c.Add(new Ctrl("Fan Control #" + (i + 1), i));
+              break;
+          }
+          break;
+
+        case Manufacturer.Alienware:
+          switch (model) {
+            case Model.Alien_R10: // IT8669E
+              v.Add(new Voltage("CPU VCore", 0, true));
+              v.Add(new Voltage("Voltage #2", 1, true));
+              v.Add(new Voltage("Voltage #3", 2, true));
+              v.Add(new Voltage("Voltage #4", 3, true));
+              v.Add(new Voltage("Voltage #5", 4, true));
+              v.Add(new Voltage("Voltage #6", 5, true));
+              v.Add(new Voltage("Voltage #7", 6, true));
+              v.Add(new Voltage("Voltage #8", 7, true));
+              v.Add(new Voltage("VBat", 8, true));
+              t.Add(new Temperature("Temperature #1", 0));
+              t.Add(new Temperature("Temperature #2", 1));
+              t.Add(new Temperature("Temperature #3", 2));
+              f.Add(new Fan("CPU Pump_Fan", 0));
+              f.Add(new Fan("Front Fan", 1));
+              f.Add(new Fan("Top Fan", 2));
+              c.Add(new Ctrl("CPU Pump_Fan Control", 0));
+              c.Add(new Ctrl("Front Fan Control", 1));
+              c.Add(new Ctrl("Top Fan Control", 2));
+              break;
+            default:
+              v.Add(new Voltage("CPU VCore", 0, true));
+              v.Add(new Voltage("Voltage #2", 1, true));
+              v.Add(new Voltage("Voltage #3", 2, true));
+              v.Add(new Voltage("Voltage #4", 3, true));
+              v.Add(new Voltage("Voltage #5", 4, true));
+              v.Add(new Voltage("Voltage #6", 5, true));
+              v.Add(new Voltage("Voltage #7", 6, true));
+              v.Add(new Voltage("Voltage #8", 7, true));
+              v.Add(new Voltage("VBat", 8, true));
               for (int i = 0; i < superIO.Temperatures.Length; i++)
                 t.Add(new Temperature("Temperature #" + (i + 1), i));
               for (int i = 0; i < superIO.Fans.Length; i++)

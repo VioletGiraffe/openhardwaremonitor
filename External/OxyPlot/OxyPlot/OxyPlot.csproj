@@ -42,6 +42,14 @@
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'openhardwaremonitor_alienware_r10|AnyCPU'">
+    <OutputPath>bin\openhardwaremonitor_alienware_r10\</OutputPath>
+    <DefineConstants>TRACE;LINQBRIDGE_LIB</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
