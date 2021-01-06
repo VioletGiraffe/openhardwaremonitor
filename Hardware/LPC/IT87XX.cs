@@ -149,9 +149,15 @@ namespace OpenHardwareMonitor.Hardware.LPC {
         SaveDefaultFanPwmControl(index);
 
         if (index < 3) {
-          if (!initialFanOutputModeEnabled[index]) {
+          //if (!initialFanOutputModeEnabled[index]) {
+          {
             WriteByte(FAN_MAIN_CTRL_REG,
               (byte)(ReadByte(FAN_MAIN_CTRL_REG, out _) | (1 << index)));
+
+            //Tac enable
+            WriteByte(FAN_MAIN_CTRL_REG,
+              (byte)(ReadByte(FAN_MAIN_CTRL_REG, out _) | (0x10 << index)));
+
           }
         }
 
