@@ -636,10 +636,11 @@ namespace OpenHardwareMonitor.GUI {
                 default:
                   break;
               }
-
-              ControlledFans[i].SetSoftware(valDev);
-              ControlledFans[i].SetAuto(-1);
-            }
+              if (ControlledFans[i].ControlMode == ControlMode.Auto) {
+                  ControlledFans[i].SetSoftware(valDev);
+                  ControlledFans[i].SetAuto(-1);
+                }
+              }
           }
 
         } catch (ManagementException) {

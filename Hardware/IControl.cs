@@ -17,7 +17,7 @@ namespace OpenHardwareMonitor.Hardware {
     Undefined,
     Software,
     Default,
-    Auto
+    Auto,
     SoftwareCurve
   }
 

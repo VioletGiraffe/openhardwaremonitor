@@ -426,7 +426,7 @@ namespace OpenHardwareMonitor.Hardware {
                     previousSensorValue = sensorValue;
 
                     // As of writing this, a Control is controlled with percentages. Round away decimals
-                    float newValue = (float)Math.Round(Calculate(sensorValue));
+                    float newValue = (float)System.Math.Round(Calculate(sensorValue));
                     
                     if(Value == newValue && previousValueAssigend)
                         return;
